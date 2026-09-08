@@ -6,15 +6,22 @@ terraform{
         }
     }
 }
-
+provider "render" {
+owner_id = "tea-dag5du2jnfac73boneog" 
+   
+}
 resource "render_web_service" "web" {
   name               = "terraform-web-service"
   plan               = "free"
   region             = "oregon"
 
+
+
   runtime_source = {
     image = {
-      image_url = "docker.io/guysadev/api-mock:0.1.0 "
+      image_url = "docker.io/guysadev/api-mock"
+      tag       = "0.1.0"
+     
     }
   }
 
