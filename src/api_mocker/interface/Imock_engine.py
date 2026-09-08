@@ -1,7 +1,7 @@
 from typing import Any, Dict, Optional, Tuple
 
-
-class IEphemeralMockEngine:
+from abc import ABC, abstractmethod
+class IEphemeralMockEngine(ABC):
     """In-memory mock engine for parsing OpenAPI specifications and
 
     simulating API behavior, state persistence, schema validation,
@@ -13,14 +13,16 @@ class IEphemeralMockEngine:
         self.routes: Dict[str, Any] = {}
         self.state_store: Dict[str, Any] = {}
 
+    @abstractmethod
     def register_spec(self, project_id: str, spec_dict: Dict[str, Any]) -> None:
         """Parse an OpenAPI specification dictionary and store route configurations.
 
         :param project_id: Unique identifier for the project scope.
         :param spec_dict: Raw OpenAPI spec loaded as a Python dictionary.
         """
-        raise NotImplementedError("Implement spec parsing and route registration.")
+        ...
 
+    @abstractmethod
     def handle_request(
         self,
         project_id: str,
@@ -38,4 +40,4 @@ class IEphemeralMockEngine:
         :param body: Optional JSON payload dictionary for POST/PUT requests.
         :return: A tuple of (HTTP status code, response body dictionary).
         """
-        raise NotImplementedError("Implement request handling logic.")
+        ...
