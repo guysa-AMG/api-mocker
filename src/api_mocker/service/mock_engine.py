@@ -6,6 +6,7 @@ class MockEngine(IEphemeralMockEngine):
         super().__init__()
 
     def register_spec(self, project_id: str, spec_dict: Dict[str, Any]) -> None:
+        pass
         
     
  
@@ -16,3 +17,4 @@ class MockEngine(IEphemeralMockEngine):
         path: str,
         body: Optional[Dict[str, Any]] = None,
     ) -> Tuple[int, Dict[str, Any]]:
+        pass
