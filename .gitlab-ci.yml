@@ -1,11 +1,11 @@
 image: astral/uv:python3.14-trixie
 stages:
-    lint
-    test
-    security
-    package
-    deploy
-    secret-detection
+    - lint
+    - test
+    - security
+    - package
+    - deploy
+    - secret-detection
 
 
 tests:
