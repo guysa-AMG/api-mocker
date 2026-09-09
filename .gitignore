@@ -8,3 +8,9 @@ wheels/
 
 # Virtual environments
 .venv
+.vscode/
+
+.pytest_cache/
+.mypy_cache/
+__pycache__/
+uv.lock

@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: Sample User Management API
+  description: A simple API to manage users and demonstrate OpenAPI structure.
+  version: 1.0.0
+servers:
+  - url: https://api.example.com/v1
+    description: Production server
+paths:
+  /users:
+    get:
+      summary: Returns a list of users
+      description: Optional extended description explaining the user list behavior.
+      responses:
+        '200':
+          description: A successful response returning a JSON array of users.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: User successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: "Jane Doe"
+        email:
+          type: string
+          format: email
+          example: "jane.doe@example.com"
