@@ -1,6 +1,7 @@
-from typing import Any, Dict, Optional, Tuple
-
 from abc import ABC, abstractmethod
+from typing import Any
+
+
 class IEphemeralMockEngine(ABC):
     """In-memory mock engine for parsing OpenAPI specifications and
 
@@ -10,11 +11,11 @@ class IEphemeralMockEngine(ABC):
 
     def __init__(self) -> None:
         """Initialize in-memory storage for registered routes and state."""
-        self.routes: Dict[str, Any] = {}
-        self.state_store: Dict[str, Any] = {}
+        self.routes: dict[str, Any] = {}
+        self.state_store: dict[str, Any] = {}
 
     @abstractmethod
-    def register_spec(self, project_id: str, spec_dict: Dict[str, Any]) -> None:
+    def register_spec(self, project_id: str, spec_dict: dict[str, Any]) -> None:
         """Parse an OpenAPI specification dictionary and store route configurations.
 
         :param project_id: Unique identifier for the project scope.
@@ -28,8 +29,8 @@ class IEphemeralMockEngine(ABC):
         project_id: str,
         http_method: str,
         path: str,
-        body: Optional[Dict[str, Any]] = None,
-    ) -> Tuple[int, Dict[str, Any]]:
+        body: dict[str, Any] | None = None,
+    ) -> tuple[int, dict[str, Any]]:
         """Process an incoming HTTP request, validate schema, handle state,
 
         simulate latency, and return a status code and response payload.

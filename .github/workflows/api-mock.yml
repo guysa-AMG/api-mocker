@@ -1,0 +1,38 @@
+name: "Api Mocker"
+
+on: [push]
+
+jobs:
+    lint:
+        name: "linting"
+        runs-on: ubuntu-latest
+        steps:
+            - name: CheckingOut
+              uses: actions/checkout@v6
+            - name: "Setting Up Python"
+              uses: actions/setup-uv@v4
+              with:
+                python-version: '3.14' 
+
+            - name: "Installing Dependencies"
+              run: uv sync --frozen
+
+            - name: "running ruff on src/"
+              run: uv ruff check src/
+    testing:
+        name: "unit-testing"
+        runs-on: ubuntu-latest
+        steps:
+            - name: CheckingOut
+              uses: actions/checkout@v6
+            - name: "Setting Up Python"
+              uses: actions/setup-uv@v4
+              with:
+                python-version: '3.14' 
+                
+            - name: "Installing Dependencies"
+              run: uv sync --frozen
+
+            - name: "running pytest"
+              run: uv run pytest
+
