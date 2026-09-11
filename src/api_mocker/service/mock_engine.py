@@ -4,8 +4,7 @@ from src.api_mocker.interface.Imock_engine import IEphemeralMockEngine
 
 
 class MockEngine(IEphemeralMockEngine):
-    _registered_specs: dict
-    routes: dict
+
     def __init__(self):
         super().__init__()
 
@@ -14,8 +13,8 @@ class MockEngine(IEphemeralMockEngine):
         if not self.validate_spec(spec_dict):
             return
         paths :dict= spec_dict["paths"]
-        for path in paths:
-            for method,value in paths.items():
+        for path, value in paths.items():
+            for method,value in value.items():
                 route_key = f"{project_id}#{method.upper()}#{path}"
              
                 self.routes[route_key]=value
@@ -34,4 +33,14 @@ class MockEngine(IEphemeralMockEngine):
         path: str,
         body: dict[str, Any] | None = None,
     ) -> tuple[int, dict[str, Any]]:
-        pass
+        data = self._registered_specs[project_id]
+        data = data["paths"]
+        data = data[path]
+        data = data[http_method.lower()]
+        data = data["responses"]
+        examples=[]
+        for status,example in data.items():
+            examples.append((int(status), example["content"]["application/json"]["example"]))
+            
+        return examples[0]
+        

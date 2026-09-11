@@ -12,6 +12,7 @@ class IEphemeralMockEngine(ABC):
     def __init__(self) -> None:
         """Initialize in-memory storage for registered routes and state."""
         self.routes: dict[str, Any] = {}
+        self._registered_specs: dict[str, Any] = {}
         self.state_store: dict[str, Any] = {}
 
     @abstractmethod
