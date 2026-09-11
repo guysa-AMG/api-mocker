@@ -18,7 +18,7 @@ jobs:
               run: uv sync --frozen
 
             - name: "running ruff on src/"
-              run: uv ruff check src/
+              run: uv run ruff check src/
     testing:
         name: "unit-testing"
         runs-on: ubuntu-latest
