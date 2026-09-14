@@ -45,9 +45,10 @@
 name: 'Terraform'
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
+  workflow_run:
+    workflows: ["Api Mocker"] 
+    types:
+      - completed
 
 permissions:
   contents: read
