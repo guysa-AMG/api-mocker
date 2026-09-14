@@ -1,4 +1,6 @@
-WTC-ZBPTTJTD
+WTC-ZBPTTJTD 
+[![Terraform](https://github.com/guysa-AMG/api-mocker/actions/workflows/terraform.yml/badge.svg)](https://github.com/guysa-AMG/api-mocker/actions/workflows/terraform.yml) [![Api Mocker](https://github.com/guysa-AMG/api-mocker/actions/workflows/api-mock.yml/badge.svg)](https://github.com/guysa-AMG/api-mocker/actions/workflows/api-mock.yml)
+
 # API Mocker
 
 An ephemeral API mock server for developing and testing clients against OpenAPI-style response definitions. The project includes an in-memory mock engine, a FastAPI application, an example specification, and container/deployment configuration.
