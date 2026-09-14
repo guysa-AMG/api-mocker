@@ -13,8 +13,8 @@ class MockEngine(IEphemeralMockEngine):
         if not self.validate_spec(spec_dict):
             return
         paths :dict= spec_dict["paths"]
-        for path, value in paths.items():
-            for method,value in value.items():
+        for path, path_value in paths.items():
+            for method,value in path_value.items():
                 route_key = f"{project_id}#{method.upper()}#{path}"
              
                 self.routes[route_key]=value
