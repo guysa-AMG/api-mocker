@@ -9,7 +9,7 @@ wheels/
 # Virtual environments
 .venv
 .vscode/
-
+node_modules/
 .pytest_cache/
 .mypy_cache/
 __pycache__/
