@@ -1,5 +1,5 @@
 from typing import Any
-
+import time
 from src.api_mocker.interface.Imock_engine import IEphemeralMockEngine
 
 
@@ -37,10 +37,11 @@ class MockEngine(IEphemeralMockEngine):
         data = data["paths"]
         data = data[path]
         data = data[http_method.lower()]
+        delay = data['x-latency-ms']
         data = data["responses"]
         examples=[]
         for status,example in data.items():
             examples.append((int(status), example["content"]["application/json"]["example"]))
-            
+        time.sleep(delay/1000)
         return examples[0]
         
