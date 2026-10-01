@@ -1,9 +1,5 @@
 import pytest
 import time
-# Assumes your class and methods match this signature:
-# engine = EphemeralMockEngine()
-# engine.register_spec(project_id: str, spec_dict: dict) -> None
-# engine.handle_request(project_id: str, http_method: str, path: str, body: dict = None) -> tuple[int, dict]
 from src.api_mocker.service.mock_engine import MockEngine as EphemeralMockEngine
 
 PROJECT_ID = "proj_local_99"
