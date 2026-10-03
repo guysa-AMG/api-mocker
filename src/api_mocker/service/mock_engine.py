@@ -35,9 +35,11 @@ class MockEngine(IEphemeralMockEngine):
     ) -> tuple[int, dict[str, Any]]:
         data = self._registered_specs[project_id]
         data = data["paths"]
-        data = data[path]
+        data = data.get(path,False)
+        if not data:
+            return (404, "notfound")
         data = data[http_method.lower()]
-        delay = data['x-latency-ms']
+        delay = data.get('x-latency-ms',0)
         data = data["responses"]
         examples=[]
         for status,example in data.items():
